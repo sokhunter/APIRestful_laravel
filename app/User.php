@@ -60,8 +60,29 @@ class User extends Authenticatable
     {
         return $this->admin == User::USUARIO_ADMINISTRADOR;
     }
+
     public static function generarVerificationToken()
     {
         return str_random(40);
+    }
+    /**
+     * Mutadores
+     */
+    public function setNameAttribute($valor)
+    {
+        $this->attributes['name'] = strtolower($valor);
+    }
+
+    public function setEmailAttribute($valor)
+    {
+        $this->attributes['email'] = strtolower($valor);
+    }
+
+    /**
+     * Accesor
+     */
+    public function getNameAttribute($valor)
+    {
+        return ucfirst($valor);
     }
 }

@@ -22,6 +22,8 @@ class Product extends Model
         'image',
         'seller_id' // Pertenece a => belongs to
     ];
+
+    protected $hidden = ['pivot'];
     
     public function estaDisponible()
     {

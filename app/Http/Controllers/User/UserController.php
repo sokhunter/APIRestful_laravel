@@ -94,11 +94,7 @@ class UserController extends ApiController
             return $this->errorResponse('Se debe espesificar al menos un valor diferente para actualizar', 422);
         }
         $user->save();
-        return $this->showOne($usuario);
-        
-        
-        $usuario = User::create($campos);
-        return $this->showOne($usuario, 201);
+        return $this->showOne($user);
     }
 
     /**
@@ -110,6 +106,6 @@ class UserController extends ApiController
     public function destroy(User $user)
     {
         $user->delete();
-        return $this->showOne($usuario);
+        return $this->showOne($user);
     }
 }

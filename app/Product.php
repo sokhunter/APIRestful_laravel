@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use SoftDeletes;
 
 	const PRODUCTO_DISPONIBLE = 'disponible';
-	const PRODUCTO_NO_DISPONIBLE = 'no disponible';
+    const PRODUCTO_NO_DISPONIBLE = 'no disponible';
+    
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'name',

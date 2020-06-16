@@ -48,25 +48,23 @@ class UserController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $usuario = User::findOrFail($id);
-        return $this->showOne($usuario);
+        return $this->showOne($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
         $reglas = [
             'email' => 'email|unique:users,email,' . $user->id, // Verifica email unico exepto el email actualdel usuario
             'password' => 'min:6|confirmed',
@@ -106,13 +104,12 @@ class UserController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $usuario = User::findOrFail($id);
-        $usuario->delete();
+        $user->delete();
         return $this->showOne($usuario);
     }
 }
